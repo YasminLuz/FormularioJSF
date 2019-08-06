@@ -12,14 +12,23 @@ public class SQLConnection {
  
     public static String status = "Não conectou...";
     private static String driverName = "org.apache.derby.jdbc.EmbeddedDriver";
-    private static String serverName = "localhost";    //caminho do servidor do BD
-    private static String mydatabase = "SystemUser";        
+    private static String serverName = "localhost";    
+    private static String mydatabase = "Formulario";        
     private static final String url = "jdbc:derby://" + serverName + "/" + mydatabase;
     private static String username = "root";            
     private static String password = "root";   
+    
+    private static SQLConnection connect;
+
+    private SQLConnection() {}
  
-    //Método de Conexão//
-    public static Connection getConexaoSQL() {
+    public static SQLConnection getInstance(){
+       if(connect == null) 
+          connect = new SQLConnection();
+        return connect;
+    }
+      
+    public Connection startConnection() {
 
         Connection connection = null;          
 
@@ -37,11 +46,11 @@ public class SQLConnection {
                 return connection;
 
         } catch (ClassNotFoundException e) {  
-            System.out.println("O driver expecificado nao foi encontrado.");
+            System.out.println("O driver expecificado nao foi encontrado."+e.getMessage());
             return null;
             
         } catch (SQLException e) {
-            System.out.println("Nao foi possivel conectar ao Banco de Dados.");
+            System.out.println("Nao foi possivel conectar ao Banco de Dados."+ e.getSQLState());
             return null;
         }
 
@@ -51,14 +60,14 @@ public class SQLConnection {
         return status;
     }
 
-    public static boolean CloseConnection() {
+    public static boolean closeConnection() {
  
         try { 
-            SQLConnection.getConexaoSQL().close();
- 
+            SQLConnection.getInstance().startConnection().close();
             return true;
  
         } catch (SQLException e) {
+            System.err.println("Não foi possivel fechar a conexao");
             return false;
  
         }
@@ -66,8 +75,8 @@ public class SQLConnection {
     }
  
     public static java.sql.Connection RestartConnection(){
-        CloseConnection();
-        return SQLConnection.getConexaoSQL();
+        closeConnection();
+        return SQLConnection.getInstance().startConnection();
      }
  
 }

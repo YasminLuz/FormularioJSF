@@ -15,12 +15,12 @@ import javax.inject.Named;
 @Named(value = "form")
 @RequestScoped
 
-public class FormularioMB {
+public class FormularioDTO {
     private String emailDestinatario, emailRemetente, nomeDestinatario, nomeRemetente; 
     private long telefaxDestinatario, telefaxRemetente;
     private Date data;
 
-    public FormularioMB() {
+    public FormularioDTO() {
     }
 
     public String getEmailDestinatario() {
@@ -80,7 +80,8 @@ public class FormularioMB {
     }
     
     public void enviar() {
-        FacesContext context = FacesContext.getCurrentInstance();    
+        FacesContext context = FacesContext.getCurrentInstance();   
+        ConexaoDAO.getInstance().create(this);
         context.addMessage(null, new FacesMessage("Sucesso", "Salvo no banco de dados!" ));
     }
     

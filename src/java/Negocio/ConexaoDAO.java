@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -14,33 +15,27 @@ import java.util.ArrayList;
  */
 public class ConexaoDAO {
 
-    private Connection conn;
+    private static Connection conn;
     private PreparedStatement stmt;
     private ResultSet rs;
+    private static ConexaoDAO connect;
     
     
-    private final String create = "INSERT INTO ROOT.Tabela(n_destinatario, tel_destinatatrio, e_destinatario, n_remetente, tel_remetente, e_remetente, data) VALUES (?,?,?,?,?,?,?)";
-    private final String query = "SELECT n_destinatario, tel_destinatatrio, e_destinatario, n_remetente, tel_remetente, e_remetente, data FROM ROOT.Tabela ";
+    private final String create = "INSERT INTO ROOT.TABELA(n_destinatario, tel_destinatario, e_destinatario, n_remetente, tel_remetente, e_remetente, dataEnvio) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private final String query = "SELECT * FROM ROOT.TABELA";
     
-    public ConexaoDAO() { 
-        conn = ConexaoDAO.startConnection();
+    private ConexaoDAO() { 
+        conn = SQLConnection.getInstance().startConnection();
         stmt = null;
-        
     }
-    
-    public static Connection startConnection(){
-       return null; 
+
+    public static ConexaoDAO getInstance(){
+       if(connect == null) 
+          connect = new ConexaoDAO();
+        return connect;
     }
-   
-    public void closeConnection(){
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-           System.err.println("Não foi possivel fechar a conexao");
-        }
-    }
-    
-      public void create(FormularioMB f){
+      
+    public void create(FormularioDTO f){
         
         try {
             stmt = conn.prepareStatement(create);
@@ -50,36 +45,36 @@ public class ConexaoDAO {
             stmt.setString(4, f.getNomeRemetente());
             stmt.setLong(5, f.getTelefaxRemetente());
             stmt.setString(6, f.getEmailRemetente());
-            stmt.setDate(7, (Date) f.getData());
+            stmt.setDate(7,new Date(Calendar.getInstance().getTimeInMillis()));  
             
-            stmt.executeUpdate();
+            stmt.execute();
             
         } catch (SQLException ex) {
             System.err.println("Não foi possivel criar usuario"+ ex);
             ex.printStackTrace();
             
         } finally{
-            SQLConnection.CloseConnection();
+            SQLConnection.getInstance().closeConnection();
             
         }   
     }
     
-    public ArrayList<FormularioMB> AllList(){
-        ArrayList<FormularioMB> list = new ArrayList<>();
+    public ArrayList<FormularioDTO> AllList(){
+        ArrayList<FormularioDTO> list = new ArrayList<>();
         
         try {
             conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             
             while(rs.next()){
-                FormularioMB form = new FormularioMB();
+                FormularioDTO form = new FormularioDTO();
                 form.setNomeDestinatario(rs.getString("n_destinatario"));
-                form.setTelefaxDestinatario(rs.getInt("tel_destinatatrio"));
+                form.setTelefaxDestinatario(rs.getInt("tel_destinatario"));
                 form.setEmailDestinatario(rs.getString("e_destinatario"));
                 form.setNomeRemetente(rs.getString("n_remetente"));
                 form.setTelefaxRemetente(rs.getLong("tel_remetente"));
                 form.setEmailRemetente(rs.getString("tel_remetente"));
-                form.setData(rs.getDate("data"));
+                form.setData(rs.getDate("dataEnvio"));
                 
                 list.add(form);
             }
