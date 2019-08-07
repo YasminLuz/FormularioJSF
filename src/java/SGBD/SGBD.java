@@ -1,24 +1,21 @@
 package SGBD;
 
+import Interface.ISGBD;
+
 /**
  *
  * @author Aluno
  */
-enum EscolherSGBD {
-    POSTGRES, DERBY, MYSQL;
-}
-
-public abstract class SGBD {
+public abstract class SGBD implements ISGBD {
 
     protected String driverName, serverName, mydatabase, url, username, password;
-    private static SGBD sgbd;
-    private SGBD opcao;
+    private static ISGBD opcao;
     
-    protected SGBD() {
+    public SGBD() {
         mydatabase = "Formulario";
     }  
     
-    public SGBD op(EscolherSGBD op){
+    public static ISGBD op(EscolherSGBD op){
         
        if(op == EscolherSGBD.DERBY)
            opcao = Derby.getInstance();
@@ -30,52 +27,33 @@ public abstract class SGBD {
        return opcao;
     }
 
+    @Override
     public String getDriverName() {
         return driverName;
     }
 
-    public void setDriverName(String driverName) {
-        this.driverName = driverName;
-    }
-
+    @Override
     public String getServerName() {
         return serverName;
     }
 
-    public void setServerName(String serverName) {
-        this.serverName = serverName;
-    }
-
+     @Override
     public String getMydatabase() {
         return mydatabase;
     }
 
-    public void setMydatabase(String mydatabase) {
-        this.mydatabase = mydatabase;
-    }
-
+    @Override
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
+    @Override
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    @Override
     public String getPassword() {
         return password;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
 }

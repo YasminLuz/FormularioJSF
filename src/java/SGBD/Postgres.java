@@ -1,19 +1,21 @@
 package SGBD;
 
+import Interface.ISGBD;
+
 /**
  *
  * @author Yasmin
  */
-class Postgres extends SGBD {
+public class Postgres extends SGBD {
 
   private static Postgres postgres;
     
     private Postgres() {
-        driverName = "org.postgresql.Driver";
-        serverName = "localhost:5432";
-        url = "jdbc:postgresql://  "+ serverName + "/" + mydatabase;
-        username = "postgres";
-        password = "12345";
+        super.driverName = "org.postgresql.Driver";
+        super.serverName = "localhost:5432";
+        super.url = "jdbc:postgresql://"+ serverName + "/" + mydatabase;
+        super.username = "postgres";
+        super.password = "12345";
     }
     
     public static Postgres getInstance() {
