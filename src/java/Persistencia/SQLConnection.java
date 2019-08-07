@@ -1,22 +1,25 @@
 package Persistencia;
 
+import Interface.ISGBD;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+import SGBD.*;
 /**
  *
  * @author Yasmin
  */
 public class SQLConnection {
- 
+    
+    ISGBD database = SGBD.op(EscolherSGBD.POSTGRES);
     public static String status = "Não conectou...";
-    private static String driverName = "org.apache.derby.jdbc.EmbeddedDriver";
-    private static String serverName = "localhost";    
-    private static String mydatabase = "Formulario";        
-    private static final String url = "jdbc:derby://" + serverName + "/" + mydatabase;
-    private static String username = "root";            
-    private static String password = "root";   
+    private final  String driverName = database.getDriverName();//"org.postgresql.Driver";//"org.sqlite.JDBC";//"org.apache.derby.jdbc.EmbeddedDriver";
+//    private final  String serverName = database.getServerName();    
+//    private final  String mydatabase = database.getMydatabase();        
+    private  final String url = database.getUrl(); //"jdbc:sqlite://C:\Users\Aluno\Documents\NetBeansProjects\FormularioJSF-master\banco.db"; 
+    //"jdbc:derby://" + serverName + "/" + mydatabase;
+    private final String username = database.getUsername(); //"root";            
+    private final  String password = database.getPassword(); //"root";   
     
     private static SQLConnection connect;
 
@@ -30,7 +33,7 @@ public class SQLConnection {
       
     public Connection startConnection() {
 
-        Connection connection = null;          
+        Connection connection;          
 
         try {
             Class.forName(driverName);
@@ -69,7 +72,6 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.err.println("Não foi possivel fechar a conexao");
             return false;
- 
         }
 
     }

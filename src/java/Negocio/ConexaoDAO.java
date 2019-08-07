@@ -21,8 +21,8 @@ public class ConexaoDAO {
     private static ConexaoDAO connect;
     
     
-    private final String create = "INSERT INTO ROOT.TABELA(n_destinatario, tel_destinatario, e_destinatario, n_remetente, tel_remetente, e_remetente, dataEnvio) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    private final String query = "SELECT * FROM ROOT.TABELA";
+    private final String create = "INSERT INTO TABELA(n_destinatario, tel_destinatario, e_destinatario, n_remetente, tel_remetente, e_remetente, dataEnvio) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private final String query = "SELECT * FROM TABELA";
     
     private ConexaoDAO() { 
         conn = SQLConnection.getInstance().startConnection();
@@ -73,7 +73,7 @@ public class ConexaoDAO {
                 form.setEmailDestinatario(rs.getString("e_destinatario"));
                 form.setNomeRemetente(rs.getString("n_remetente"));
                 form.setTelefaxRemetente(rs.getLong("tel_remetente"));
-                form.setEmailRemetente(rs.getString("tel_remetente"));
+                form.setEmailRemetente(rs.getString("e_remetente"));
                 form.setData(rs.getDate("dataEnvio"));
                 
                 list.add(form);

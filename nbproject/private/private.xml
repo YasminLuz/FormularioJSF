@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/FormularioJSF-master/src/java/Negocio/FormularioDTO.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/FormularioJSF-master/web/index.xhtml</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/FormularioJSF-master/src/java/Persistencia/SQLConnection.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/FormularioJSF-master/src/java/SGBD/Derby.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/FormularioJSF-master/src/java/SGBD/Postgres.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/FormularioJSF-master/src/java/SGBD/SGBD.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/FormularioJSF-master/src/java/SGBD/Sqlite.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/FormularioJSF-master/src/java/Negocio/ConexaoDAO.java</file>
+        </group>
+    </open-files>
+</project-private>
