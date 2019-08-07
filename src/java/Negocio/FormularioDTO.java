@@ -1,5 +1,6 @@
 package Negocio;
 
+import java.util.ArrayList;
 import java.util.Date;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -79,10 +80,22 @@ public class FormularioDTO {
         this.nomeRemetente = nomeRemetente;
     }
     
+    public ArrayList<FormularioDTO> getCadastrados(){
+        return ConexaoDAO.getInstance().AllList();
+    }
+    
     public void enviar() {
         FacesContext context = FacesContext.getCurrentInstance();   
         ConexaoDAO.getInstance().create(this);
         context.addMessage(null, new FacesMessage("Sucesso", "Salvo no banco de dados!" ));
+    }
+    
+    public String redirecionaCadastro(){
+        return "index";
+    }
+    
+    public String redirecionaLista(){
+        return "list";
     }
     
 }

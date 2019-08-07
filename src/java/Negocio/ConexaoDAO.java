@@ -73,7 +73,7 @@ public class ConexaoDAO {
                 form.setEmailDestinatario(rs.getString("e_destinatario"));
                 form.setNomeRemetente(rs.getString("n_remetente"));
                 form.setTelefaxRemetente(rs.getLong("tel_remetente"));
-                form.setEmailRemetente(rs.getString("tel_remetente"));
+                form.setEmailRemetente(rs.getString("e_remetente"));
                 form.setData(rs.getDate("dataEnvio"));
                 
                 list.add(form);

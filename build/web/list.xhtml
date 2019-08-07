@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Listar cadastrados</title>
+    </h:head>
+    <h:body>
+        <h:form> 
+            <p:growl id="msgGrowl"  showDetail="true" sticky="false" />  
+            <p:panel header="Lista de cadastrados">  
+                <h:panelGrid columns="2" cellpadding="7">  
+                    
+                    <p:dataTable var="cad" value="#{form.cadastrados}">
+                        <p:column headerText="De">
+                            <h:outputText value="#{cad.nomeRemetente}" />
+                        </p:column>
+
+                        <p:column headerText="Telefax">
+                            <h:outputText value="#{cad.telefaxRemetente}" />
+                        </p:column>
+
+                        <p:column headerText="E-mail">
+                            <h:outputText value="#{cad.emailRemetente}" />
+                        </p:column>
+
+                        <p:column headerText="Para">
+                            <h:outputText value="#{cad.nomeDestinatario}" />
+                        </p:column>
+                        
+                        <p:column headerText="Telefax">
+                            <h:outputText value="#{cad.telefaxDestinatario}" />
+                        </p:column>
+                        
+                        <p:column headerText="E-mail">
+                            <h:outputText value="#{cad.emailDestinatario}" />
+                        </p:column>
+                        
+                        <p:column headerText="Data">
+                            <h:outputText value="#{cad.data}" />
+                        </p:column>
+           
+                    </p:dataTable>
+                    
+                </h:panelGrid>  
+            </p:panel> 
+            
+        </h:form> 
+        
+    </h:body>
+</html>
+
