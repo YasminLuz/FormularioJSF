@@ -11,13 +11,13 @@ import java.sql.SQLException;
 public class SQLConnection {
  
     public static String status = "Não conectou...";
-    private static String driverName = "org.sqlite.JDBC";//org.postgresql.Driver";//"org.apache.derby.jdbc.EmbeddedDriver";
+    private static String driverName = "org.postgresql.Driver";//"org.sqlite.JDBC";//"org.apache.derby.jdbc.EmbeddedDriver";
     private static String serverName = "localhost:5432";    
     private static String mydatabase = "Formulario";        
-    private static final String url = "jdbc:sqlite://C:\Users\Aluno\Documents\NetBeansProjects\FormularioJSF-master\banco.db"; 
-//jdbc:postgresql://" + serverName + "/" + mydatabase; //"jdbc:derby://" + serverName + "/" + mydatabase;
-    private static String username = "";//"postgres";//"root";            
-    private static String password = "";//"aluno"; //"root";   
+    private static final String url = "jdbc:postgresql://" + serverName + "/" + mydatabase;//"jdbc:sqlite://C:\Users\Aluno\Documents\NetBeansProjects\FormularioJSF-master\banco.db"; 
+    //"jdbc:derby://" + serverName + "/" + mydatabase;
+    private static String username = "postgres";//"root";            
+    private static String password = "12345"; //"root";   
     
     private static SQLConnection connect;
 
