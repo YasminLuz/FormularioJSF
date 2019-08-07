@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Cadastro formulário </title>
+    </h:head>
+    
+    <h:body>
+        <h:form> 
+            <p:growl id="msgGrowl"  showDetail="true" sticky="false" />  
+
+            <p:panel header="Cadastro">  
+                <h:panelGrid columns="2" cellpadding="7">  
+                    <p:outputLabel for="para" value="Para:" />   
+                    <p:inputText id="para" value="#{form.nomeDestinatario}" required="true" />  
+                    <p:outputLabel for="tel" value="Telefax:" />   
+                    <p:inputText id="tel" value="#{form.telefaxDestinatario}" required="true" />  
+                    <p:outputLabel for="email1" value="Email:" />   
+                    <p:inputText id="email1" value="#{form.emailDestinatario}" required="true" />  
+                   
+                    
+                    <p:outputLabel for="de" value="De:" />   
+                    <p:inputText id="de" value="#{form.nomeRemetente}" required="true" />  
+                    <p:outputLabel for="tel2" value="Telefax:" />   
+                    <p:inputText id="tel2" value="#{form.telefaxRemetente}" required="true" />  
+                    <p:outputLabel for="email2" value="Email:" />   
+                    <p:inputText id="email2" value="#{form.emailRemetente}" required="true" /> 
+                     
+                    Data: <p:calendar pattern="dd/MM/yyyy" locale="pt_BR" value="#{form.data}" required="true" />
+                    
+                </h:panelGrid>  
+
+                <p:commandButton value="Enviar" actionListener="#{form.enviar()}" update="msgGrowl" />
+
+            </p:panel> 
+        </h:form> 
+    </h:body>
+</html>
+

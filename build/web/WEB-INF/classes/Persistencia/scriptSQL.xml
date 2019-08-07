@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+CREATE DATABASE [Formulario]
+USE [Formulario]
+GO
+ 
+CREATE TABLE [Tabela](
+    [n_destinatario] [varchar](20) NOT NULL,
+    [tel_destinatario] [bigint] NOT NULL,
+    [e_destinatario] [varchar](50) NOT NULL,
+    [n_remetente] [varchar](20) NOT NULL,
+    [tel_remetente] [bigint] NOT NULL,
+    [e_remetente] [varchar](50) NOT NULL,
+    [dataEnvio] [date] NOT NULL
+)
+
