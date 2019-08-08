@@ -8,46 +8,42 @@
     </h:head>
     <h:body>
         <h:form> 
-            <p:growl id="msgGrowl"  showDetail="true" sticky="false" />  
-            <p:panel header="Lista de cadastrados">  
-                <h:panelGrid columns="2" cellpadding="7">  
-                    
-                    <p:dataTable var="cad" value="#{form.cadastrados}">
-                        <p:column headerText="De">
-                            <h:outputText value="#{cad.nomeRemetente}" />
-                        </p:column>
+            <p:dataTable var="cad"  value="#{form.cadastrados}" 
+                         rows="5"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                <p:column headerText="De">
+                    <h:outputText value="#{cad.nomeRemetente}" />
+                </p:column>
 
-                        <p:column headerText="Telefax">
-                            <h:outputText value="#{cad.telefaxRemetente}" />
-                        </p:column>
+                <p:column headerText="Telefax">
+                    <h:outputText value="#{cad.telefaxRemetente}" />
+                </p:column>
 
-                        <p:column headerText="E-mail">
-                            <h:outputText value="#{cad.emailRemetente}" />
-                        </p:column>
+                <p:column headerText="E-mail">
+                    <h:outputText value="#{cad.emailRemetente}" />
+                </p:column>
 
-                        <p:column headerText="Para">
-                            <h:outputText value="#{cad.nomeDestinatario}" />
-                        </p:column>
-                        
-                        <p:column headerText="Telefax">
-                            <h:outputText value="#{cad.telefaxDestinatario}" />
-                        </p:column>
-                        
-                        <p:column headerText="E-mail">
-                            <h:outputText value="#{cad.emailDestinatario}" />
-                        </p:column>
-                        
-                        <p:column headerText="Data">
-                            <h:outputText value="#{cad.data}" />
-                        </p:column>
-           
-                    </p:dataTable>
-                    
-                </h:panelGrid>  
-            </p:panel> 
-            
+                <p:column headerText="Para">
+                    <h:outputText value="#{cad.nomeDestinatario}" />
+                </p:column>
+
+                <p:column headerText="Telefax">
+                    <h:outputText value="#{cad.telefaxDestinatario}" />
+                </p:column>
+
+                <p:column headerText="E-mail">
+                    <h:outputText value="#{cad.emailDestinatario}" />
+                </p:column>
+
+                <p:column headerText="Data">
+                    <h:outputText value="#{cad.data}" />
+                </p:column>
+
+            </p:dataTable>           
         </h:form> 
-        
+
     </h:body>
 </html>
 

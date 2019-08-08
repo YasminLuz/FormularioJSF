@@ -20,6 +20,7 @@ public class FormularioDTO {
     private String emailDestinatario, emailRemetente, nomeDestinatario, nomeRemetente; 
     private long telefaxDestinatario, telefaxRemetente;
     private Date data;
+  
 
     public FormularioDTO() {
     }
@@ -96,6 +97,10 @@ public class FormularioDTO {
     
     public String redirecionaLista(){
         return "list";
+    }
+    
+    public String redirecionaInicio(){
+        return "home";
     }
     
 }

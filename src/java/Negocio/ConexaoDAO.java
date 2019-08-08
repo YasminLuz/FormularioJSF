@@ -8,11 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.enterprise.context.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Aluno
  */
+//@ManagedBean(name = "carService")
+//@ApplicationScoped
 public class ConexaoDAO {
 
     private static Connection conn;

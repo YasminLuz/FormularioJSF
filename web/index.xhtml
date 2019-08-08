@@ -34,6 +34,11 @@
                 </h:panelGrid>  
 
                 <p:commandButton value="Enviar" actionListener="#{form.enviar()}" update="msgGrowl" />
+                
+                <p:commandButton value="Limpar" ajax="true" immediate="true" type="reset"/>
+                <br/>
+                <br/>
+                <p:commandLink value="Voltar ao início" action="#{form.redirecionaInicio()}" update="msgGrowl"/>                 
 
             </p:panel> 
         </h:form> 
